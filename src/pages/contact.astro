@@ -1,0 +1,18 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+---
+
+<PageLayout
+  title="Contact — Luca Wetherall"
+  description="Get in touch with Luca Wetherall for performance enquiries, lessons, or collaborations."
+>
+  <h1>Contact</h1>
+  <ContactForm />
+</PageLayout>
+
+<style>
+  h1 {
+    margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  }
+</style>

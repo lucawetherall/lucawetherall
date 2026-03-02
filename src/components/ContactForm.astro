@@ -1,0 +1,183 @@
+---
+// Replace YOUR_ACCESS_KEY_HERE with your Web3Forms access key.
+// Register at https://web3forms.com to get one.
+const accessKey = 'YOUR_ACCESS_KEY_HERE';
+---
+
+<form class="form" action="https://api.web3forms.com/submit" method="POST" id="contact-form">
+  <input type="hidden" name="access_key" value={accessKey} />
+  <input type="hidden" name="subject" value="New message from lucawetherall.co.uk" />
+  <input type="hidden" name="from_name" value="Website Contact Form" />
+  <!-- Honeypot for spam prevention -->
+  <input type="checkbox" name="botcheck" class="sr-only" tabindex="-1" autocomplete="off" />
+
+  <div class="form__group">
+    <label for="name" class="form__label">Name</label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      class="form__input"
+      required
+      autocomplete="name"
+    />
+  </div>
+
+  <div class="form__group">
+    <label for="email" class="form__label">Email</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      class="form__input"
+      required
+      autocomplete="email"
+    />
+  </div>
+
+  <div class="form__group">
+    <label for="subject" class="form__label">Subject</label>
+    <input
+      type="text"
+      id="subject"
+      name="subject"
+      class="form__input"
+      required
+    />
+  </div>
+
+  <div class="form__group">
+    <label for="message" class="form__label">Message</label>
+    <textarea
+      id="message"
+      name="message"
+      class="form__textarea"
+      rows="6"
+      required
+    ></textarea>
+  </div>
+
+  <button type="submit" class="form__button" id="submit-btn">
+    Send
+  </button>
+
+  <div id="form-result" class="form__result" aria-live="polite"></div>
+</form>
+
+<style>
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.2rem, 2vw, 1.8rem);
+    max-width: 560px;
+  }
+
+  .form__group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .form__label {
+    font-size: clamp(0.95rem, 1vw + 0.3rem, 1.05rem);
+    color: var(--color-text-light);
+  }
+
+  .form__input,
+  .form__textarea {
+    font-family: var(--font-serif);
+    font-size: clamp(1rem, 1vw + 0.3rem, 1.1rem);
+    color: var(--color-text);
+    background-color: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: 2px;
+    padding: clamp(0.6rem, 1.5vw, 0.8rem) clamp(0.8rem, 1.5vw, 1rem);
+    transition: border-color 0.2s ease;
+    min-height: 44px;
+  }
+
+  .form__input:focus,
+  .form__textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+  }
+
+  .form__textarea {
+    resize: vertical;
+    min-height: 160px;
+  }
+
+  .form__button {
+    font-family: var(--font-serif);
+    font-size: clamp(1rem, 1vw + 0.3rem, 1.1rem);
+    color: var(--color-text);
+    background: transparent;
+    border: 1px solid var(--color-text);
+    border-radius: 2px;
+    padding: clamp(0.6rem, 1.5vw, 0.8rem) clamp(1.5rem, 3vw, 2.5rem);
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    align-self: flex-start;
+    min-height: 44px;
+  }
+
+  .form__button:hover {
+    background-color: var(--color-text);
+    color: var(--color-bg);
+  }
+
+  .form__button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .form__result {
+    font-size: 0.95rem;
+    min-height: 1.5em;
+  }
+
+  .form__result--success {
+    color: #4a7c59;
+  }
+
+  .form__result--error {
+    color: #a14444;
+  }
+</style>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const result = document.getElementById('form-result')!;
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+    result.textContent = '';
+    result.className = 'form__result';
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+      });
+      const data = await response.json();
+
+      if (data.success) {
+        result.textContent = 'Thank you! Your message has been sent.';
+        result.classList.add('form__result--success');
+        form.reset();
+      } else {
+        result.textContent = 'Something went wrong. Please try again.';
+        result.classList.add('form__result--error');
+      }
+    } catch {
+      result.textContent = 'Something went wrong. Please try again.';
+      result.classList.add('form__result--error');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send';
+    }
+  });
+</script>

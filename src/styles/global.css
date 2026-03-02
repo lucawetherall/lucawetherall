@@ -1,0 +1,135 @@
+/* ========================================
+   Global Styles — lucawetherall.co.uk
+   ======================================== */
+
+/* CSS Custom Properties */
+:root {
+  --color-bg: #FAF5EF;
+  --color-text: #2C2420;
+  --color-text-light: #5C534D;
+  --color-accent: #8B7355;
+  --color-border: #DDD5CB;
+  --color-link: #2C2420;
+  --color-link-hover: #8B7355;
+
+  --font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+
+  --container-max: 720px;
+  --container-wide: 960px;
+  --container-padding: clamp(1.5rem, 5vw, 3rem);
+}
+
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Base */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-serif);
+  font-size: clamp(1.05rem, 1.2vw + 0.5rem, 1.2rem);
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography */
+h1, h2, h3, h4 {
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+}
+
+h1 {
+  font-size: clamp(2.2rem, 4vw + 1rem, 3.5rem);
+}
+
+h2 {
+  font-size: clamp(1.6rem, 2.5vw + 0.5rem, 2.2rem);
+  margin-bottom: 1.5rem;
+}
+
+h3 {
+  font-size: clamp(1.2rem, 1.5vw + 0.5rem, 1.5rem);
+}
+
+p {
+  margin-bottom: 1.25em;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* Links */
+a {
+  color: var(--color-link);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-link-hover);
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Container utility */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+.container--wide {
+  max-width: var(--container-wide);
+}
+
+/* Page content spacing */
+.page-content {
+  padding-top: clamp(3rem, 8vw, 6rem);
+  padding-bottom: clamp(3rem, 8vw, 6rem);
+}
+
+/* Selection */
+::selection {
+  background-color: var(--color-accent);
+  color: white;
+}
+
+/* Focus styles for accessibility */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* Visually hidden (for screen readers) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
