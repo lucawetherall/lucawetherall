@@ -1,0 +1,58 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+---
+
+<PageLayout
+  title="Teaching — Luca Wetherall"
+  description="Music lessons with Luca Wetherall. Book a lesson or get in touch to learn more."
+>
+  <h1>Teaching</h1>
+  <div class="teaching-content">
+    <p>
+      Luca offers private music tuition for students of all ages and abilities.
+      With experience teaching across a range of levels — from beginners to advanced
+      students — lessons are tailored to each individual's goals, whether that's
+      preparing for exams, developing technique, or simply enjoying music.
+    </p>
+    <p>
+      Lessons focus on building a strong musical foundation, combining technical
+      development with musicianship, theory, and ear training. Luca's teaching
+      approach emphasises understanding and enjoyment, helping students develop
+      confidence and a lifelong connection to music.
+    </p>
+    <p>
+      Lessons are available in person (London) and online.
+    </p>
+    <p class="teaching-cta">
+      <a href="https://cal.com/lucawetherall" target="_blank" rel="noopener noreferrer" class="teaching-link">
+        Book a lesson via Cal.com &rarr;
+      </a>
+    </p>
+  </div>
+</PageLayout>
+
+<style>
+  h1 {
+    margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  }
+
+  .teaching-content p {
+    margin-bottom: 1.25em;
+  }
+
+  .teaching-cta {
+    margin-top: clamp(1.5rem, 3vw, 2.5rem);
+  }
+
+  .teaching-link {
+    font-size: clamp(1.05rem, 1.2vw + 0.3rem, 1.2rem);
+    color: var(--color-text);
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 2px;
+    transition: border-color 0.2s ease;
+  }
+
+  .teaching-link:hover {
+    border-color: var(--color-text);
+  }
+</style>

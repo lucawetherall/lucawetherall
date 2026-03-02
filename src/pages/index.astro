@@ -1,0 +1,132 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout>
+  <main class="home">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero__inner">
+        <div class="hero__photo-wrapper">
+          <img
+            src="/images/profile.jpg"
+            alt="Luca Wetherall"
+            class="hero__photo"
+            width="280"
+            height="280"
+          />
+        </div>
+        <h1 class="hero__name">Luca Wetherall</h1>
+        <p class="hero__tagline">Musician / Composer / Teacher</p>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section container">
+      <h2 class="section__title">About</h2>
+      <p>
+        Luca Wetherall is a versatile musician, composer, and teacher based in London.
+        With a deep passion for music spanning classical, contemporary, and sacred traditions,
+        Luca brings a wealth of experience to every performance and collaboration.
+      </p>
+      <p>
+        Holding degrees in music performance and composition, Luca has worked with ensembles
+        and churches across London, developing a distinctive voice that bridges historical
+        practice with modern expression.
+      </p>
+    </section>
+
+    <!-- Recent Projects Section -->
+    <section class="section container">
+      <h2 class="section__title">Recent Projects</h2>
+      <ul class="projects">
+        <li class="projects__item">
+          <span class="projects__name">St. Mary's Acton</span>
+        </li>
+        <li class="projects__item">
+          <span class="projects__name">Alma Consort</span>
+        </li>
+        <li class="projects__item">
+          <span class="projects__name">St. John the Baptist Holland Road</span>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* Hero */
+  .hero {
+    padding: clamp(4rem, 12vw, 8rem) var(--container-padding) clamp(3rem, 8vw, 5rem);
+    text-align: center;
+  }
+
+  .hero__inner {
+    max-width: var(--container-max);
+    margin: 0 auto;
+  }
+
+  .hero__photo-wrapper {
+    margin: 0 auto clamp(1.5rem, 3vw, 2.5rem);
+    width: clamp(180px, 30vw, 280px);
+    height: clamp(180px, 30vw, 280px);
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .hero__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero__name {
+    font-size: clamp(2.5rem, 5vw + 1rem, 4rem);
+    font-weight: 400;
+    margin-bottom: 0.3em;
+    letter-spacing: 0.02em;
+  }
+
+  .hero__tagline {
+    font-size: clamp(1.05rem, 1.5vw + 0.3rem, 1.3rem);
+    color: var(--color-text-light);
+    letter-spacing: 0.08em;
+    font-weight: 300;
+    margin-bottom: 0;
+  }
+
+  /* Sections */
+  .section {
+    padding-top: clamp(2.5rem, 6vw, 4rem);
+    padding-bottom: clamp(2.5rem, 6vw, 4rem);
+  }
+
+  .section__title {
+    margin-bottom: clamp(1rem, 2vw, 1.5rem);
+  }
+
+  /* Projects list */
+  .projects {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.8rem, 1.5vw, 1.2rem);
+  }
+
+  .projects__item {
+    padding-bottom: clamp(0.8rem, 1.5vw, 1.2rem);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .projects__item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .projects__name {
+    font-size: clamp(1.05rem, 1.2vw + 0.3rem, 1.2rem);
+  }
+</style>
