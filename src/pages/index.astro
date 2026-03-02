@@ -10,7 +10,7 @@ import Footer from '../components/Footer.astro';
       <div class="hero__inner">
         <div class="hero__photo-wrapper">
           <img
-            src="/images/profile.jpg"
+            src={`${import.meta.env.BASE_URL}images/profile.jpg`}
             alt="Luca Wetherall"
             class="hero__photo"
             width="280"

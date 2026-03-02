@@ -1,17 +1,18 @@
 ---
+const base = import.meta.env.BASE_URL;
 const currentPath = Astro.url.pathname;
 
 const links = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
-  { href: '/teaching', label: 'Teaching' },
-  { href: '/contact', label: 'Contact' },
+  { href: base, label: 'Home' },
+  { href: `${base}about`, label: 'About' },
+  { href: `${base}teaching`, label: 'Teaching' },
+  { href: `${base}contact`, label: 'Contact' },
 ];
 ---
 
 <nav class="nav" aria-label="Main navigation">
   <div class="nav__inner container--wide">
-    <a href="/" class="nav__logo">Luca Wetherall</a>
+    <a href={base} class="nav__logo">Luca Wetherall</a>
 
     <button
       class="nav__toggle"
@@ -26,8 +27,8 @@ const links = [
     <ul class="nav__links" role="list">
       {links.map(({ href, label }) => {
         const isActive =
-          href === '/'
-            ? currentPath === '/'
+          href === base
+            ? currentPath === base || currentPath === base.replace(/\/$/, '')
             : currentPath.startsWith(href);
         return (
           <li>
