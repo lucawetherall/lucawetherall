@@ -1,25 +1,44 @@
 /* ========================================
-   Global Styles — lucawetherall.co.uk
+   Global styles — lucawetherall.co.uk
+   Mirrors the WP "tu-wpcom" theme as rendered live.
    ======================================== */
 
-/* CSS Custom Properties */
 :root {
-  --color-bg: #FAF5EF;
-  --color-text: #2C2420;
-  --color-text-light: #5C534D;
-  --color-accent: #8B7355;
-  --color-border: #DDD5CB;
-  --color-link: #2C2420;
-  --color-link-hover: #8B7355;
+  /* Palette */
+  --color-bg: #fffbf4;
+  --color-text: #212121;
+  --color-accent: #5d588e;
+  --color-muted: #757575;
+  --color-link-hover: #4c7b72;
 
-  --font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  /* Fonts */
+  --font-serif: "Spectral", "Source Serif Pro", Georgia, serif;
+  --font-sans: "IBM Plex Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
-  --container-max: 720px;
-  --container-wide: 960px;
-  --container-padding: clamp(1.5rem, 5vw, 3rem);
+  /* Type scale (clamps from WP global-styles-inline-css) */
+  --fs-x-small: clamp(0.833rem, 0.833rem + ((1vw - 0.2rem) * 1), 0.833rem);
+  --fs-small: clamp(0.833rem, 0.833rem + ((1vw - 0.2rem) * 0.461), 1rem);
+  --fs-medium: clamp(1rem, 1rem + ((1vw - 0.2rem) * 0.552), 1.2rem);
+  --fs-large: clamp(1.2rem, 1.2rem + ((1vw - 0.2rem) * 0.662), 1.44rem);
+  --fs-x-large: clamp(1.44rem, 1.44rem + ((1vw - 0.2rem) * 0.794), 1.728rem);
+  --fs-xx-large: clamp(1.728rem, 1.728rem + ((1vw - 0.2rem) * 0.954), 2.074rem);
+
+  /* Layout */
+  --content-size: 650px;
+  --wide-size: 900px;
+  --page-padding-x: 19px;
+
+  /* Spacing scale */
+  --space-20: 0.44rem;
+  --space-30: 0.75rem;
+  --space-40: 1rem;
+  --space-50: 1.5rem;
+  --space-60: 2rem;
+  --space-70: 3rem;
+  --space-80: 4rem;
+  --block-gap: var(--space-40);
 }
 
-/* Reset */
 *,
 *::before,
 *::after {
@@ -28,60 +47,101 @@
   padding: 0;
 }
 
-/* Base */
 html {
-  scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
 }
 
 body {
   font-family: var(--font-serif);
-  font-size: clamp(1.05rem, 1.2vw + 0.5rem, 1.2rem);
-  font-weight: 400;
-  line-height: 1.75;
+  font-size: var(--fs-small);
+  line-height: 1.5;
   color: var(--color-text);
   background-color: var(--color-bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Typography */
-h1, h2, h3, h4 {
-  font-weight: 400;
-  line-height: 1.3;
-  letter-spacing: 0.01em;
+main {
+  padding-inline: var(--page-padding-x);
 }
 
-h1 {
-  font-size: clamp(2.2rem, 4vw + 1rem, 3.5rem);
+/* Layout utilities */
+.alignwide {
+  max-width: var(--wide-size);
+  margin-inline: auto;
 }
 
-h2 {
-  font-size: clamp(1.6rem, 2.5vw + 0.5rem, 2.2rem);
-  margin-bottom: 1.5rem;
+.alignfull {
+  margin-inline: calc(var(--page-padding-x) * -1);
+  padding-inline: var(--page-padding-x);
 }
 
-h3 {
-  font-size: clamp(1.2rem, 1.5vw + 0.5rem, 1.5rem);
+.content {
+  max-width: var(--content-size);
+  margin-inline: auto;
 }
 
-p {
-  margin-bottom: 1.25em;
+/* Font overrides */
+.spectral-override,
+.spectral-override * {
+  font-family: var(--font-serif);
 }
 
-p:last-child {
-  margin-bottom: 0;
+.plex-sans,
+.plex-sans * {
+  font-family: var(--font-sans);
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  line-height: 1.125;
+  font-style: normal;
+}
+h1 { font-size: var(--fs-xx-large); }
+h2 { font-size: var(--fs-x-large); }
+h3 { font-size: var(--fs-large); }
+h4 { font-size: var(--fs-medium); }
+h5 { font-size: var(--fs-small); }
+h6 { font-size: var(--fs-x-small); }
+
+/* Inner page title: WP uses H2 size, we use semantic H1 */
+.page-title {
+  font-size: var(--fs-x-large);
+  text-align: center;
+  max-width: var(--wide-size);
+  margin-inline: auto;
+}
+
+/* Paragraph rhythm */
+p + p,
+p + ul,
+ul + p {
+  margin-top: var(--space-30);
 }
 
 /* Links */
 a {
-  color: var(--color-link);
-  text-decoration: none;
-  transition: color 0.2s ease;
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  text-decoration: underline;
+  text-decoration-thickness: 0.0625em;
+  text-underline-offset: 0.3em;
 }
 
-a:hover {
+p a:hover,
+li a:hover {
   color: var(--color-link-hover);
+  text-decoration: none;
+}
+
+/* Lists */
+ul {
+  padding-left: var(--block-gap);
+}
+ul li + li {
+  margin-top: var(--space-30);
 }
 
 /* Images */
@@ -91,37 +151,48 @@ img {
   display: block;
 }
 
-/* Container utility */
-.container {
-  max-width: var(--container-max);
-  margin: 0 auto;
-  padding-left: var(--container-padding);
-  padding-right: var(--container-padding);
+/* Buttons (contact form submit) */
+.button,
+button.button,
+input[type="submit"].button {
+  background-color: var(--color-text);
+  border: 0;
+  border-radius: 2px;
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: var(--fs-x-small);
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: inherit;
+  padding: 1.050420168em 2.100840336em;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
 }
-
-.container--wide {
-  max-width: var(--container-wide);
-}
-
-/* Page content spacing */
-.page-content {
-  padding-top: clamp(3rem, 8vw, 6rem);
-  padding-bottom: clamp(3rem, 8vw, 6rem);
-}
-
-/* Selection */
-::selection {
+.button:hover,
+.button:focus {
   background-color: var(--color-accent);
-  color: white;
+  color: #ffffff;
+}
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
-/* Focus styles for accessibility */
+/* Focus visible */
 :focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 3px;
 }
 
-/* Visually hidden (for screen readers) */
+::selection {
+  background: var(--color-accent);
+  color: #ffffff;
+}
+
+/* Visually hidden */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -132,4 +203,24 @@ img {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+}
+
+/* Skip-to-content link */
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.5rem 1rem;
+  background: var(--color-text);
+  color: var(--color-bg);
+  font-family: var(--font-sans);
+  font-size: var(--fs-x-small);
+  font-weight: 700;
+  text-decoration: none;
+  transform: translateY(-200%);
+  transition: transform 0.15s ease;
+  z-index: 100;
+}
+.skip-link:focus {
+  transform: translateY(0);
 }

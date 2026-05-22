@@ -1,132 +1,228 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Footer from '../components/Footer.astro';
+import headshot from '../assets/headshot.png';
+
+const siteUrl = 'https://lucawetherall.co.uk';
+const personId = `${siteUrl}/#person`;
+const websiteId = `${siteUrl}/#website`;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebPage',
+      '@id': `${siteUrl}/`,
+      url: `${siteUrl}/`,
+      name: 'Luca Wetherall - Conductor, Bass, Pianist, Musicologist, Arranger',
+      isPartOf: { '@id': websiteId },
+      about: { '@id': personId },
+      description: 'Luca is a bass, conductor, pianist, guitarist, and arranger based in London. He is a DPhil researcher and Tutor at the University of Oxford.',
+      inLanguage: 'en-GB',
+    },
+    {
+      '@type': 'WebSite',
+      '@id': websiteId,
+      url: `${siteUrl}/`,
+      name: 'Luca Wetherall',
+      description: 'Conductor · Bass · Pianist · Singing Teacher',
+      publisher: { '@id': personId },
+      inLanguage: 'en-GB',
+    },
+    {
+      '@type': ['Person', 'Organization'],
+      '@id': personId,
+      name: 'Luca Wetherall',
+      jobTitle: 'Conductor, bass, pianist, singing teacher, and arranger',
+      url: `${siteUrl}/`,
+      image: `${siteUrl}/og-image.png`,
+      affiliation: {
+        '@type': 'Organization',
+        name: 'University of Oxford',
+      },
+      sameAs: [
+        'https://www.instagram.com/lu.ca.w/',
+        'https://www.youtube.com/c/LucaWetherall',
+        'https://www.tiktok.com/@luca.wetherall',
+      ],
+    },
+  ],
+};
 ---
 
-<BaseLayout>
-  <main class="home">
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="hero__inner">
-        <div class="hero__photo-wrapper">
-          <img
-            src={`${import.meta.env.BASE_URL}images/profile.jpg`}
-            alt="Luca Wetherall"
-            class="hero__photo"
-            width="280"
-            height="280"
-          />
-        </div>
+<BaseLayout jsonLd={jsonLd}>
+  <main id="main">
+    <section class="hero alignwide">
+      <div class="hero__image-col">
+        <div class="hero__top-spacer" aria-hidden="true"></div>
+        <Image
+          src={headshot}
+          alt="Luca Wetherall"
+          widths={[411, 600]}
+          sizes="(min-width: 782px) 411px, 80vw"
+          loading="eager"
+          fetchpriority="high"
+          class="hero__headshot"
+        />
+      </div>
+      <div class="hero__text-col">
         <h1 class="hero__name">Luca Wetherall</h1>
-        <p class="hero__tagline">Musician / Composer / Teacher</p>
+        <p class="hero__line"><strong>Conductor, bass, pianist, singing teacher, and arranger.</strong></p>
+        <p class="hero__line">Musicologist and Tutor at the <strong>University of Oxford.</strong></p>
+        <p class="hero__line"><em>Get in touch <a href="/contact"><strong>here</strong></a><strong>.</strong></em></p>
+        <div class="hero__bottom-spacer" aria-hidden="true"></div>
       </div>
     </section>
 
-    <!-- About Section -->
-    <section class="section container">
-      <h2 class="section__title">About</h2>
-      <p>
-        Luca Wetherall is a versatile musician, composer, and teacher based in London.
-        With a deep passion for music spanning classical, contemporary, and sacred traditions,
-        Luca brings a wealth of experience to every performance and collaboration.
-      </p>
-      <p>
-        Holding degrees in music performance and composition, Luca has worked with ensembles
-        and churches across London, developing a distinctive voice that bridges historical
-        practice with modern expression.
-      </p>
+    <section class="row alignwide spectral-override">
+      <div class="row__col">
+        <p class="row__label"><strong>About:</strong></p>
+        <p class="row__body">
+          Luca is a highly experienced musician working across multiple disciplines and genres. He is the Director of Music and Organist at <a href="https://www.stmaryacton.org.uk/" target="_blank" rel="noreferrer noopener">St. Mary’s Acton</a>, Director of the <a href="http://www.almaconsort.com" target="_blank" rel="noreferrer noopener">Alma Consort</a> and one of the Choral Directors at <a href="https://hollandparkbenefice.org/about-st-john-the-baptist" target="_blank" rel="noreferrer noopener">St. John the Baptist Holland Road</a>. He is an accomplished singer working as a low bass in opera and in choral music. As a pianist, he is highly renowned for his abilities as an improviser and sight-reader.
+        </p>
+        <p class="row__body">
+          He is also an academic musicologist and currently holds a Clarendon Scholarship at the University of Oxford where he is undertaking his doctoral research in popular music and working as a Tutor for the Faculty of Music.
+        </p>
+        <p class="row__body"><em>Read more <strong><a href="/about">here</a></strong></em>. <em>Enquire about teaching <strong><a href="/teaching">here</a></strong></em>.</p>
+      </div>
+
+      <div class="row__col">
+        <p class="row__label"><strong>Recent Projects:</strong></p>
+        <ul class="row__list">
+          <li>Musical Director and Music Supervisor: <em>Disunited Jukebox</em> (Company Carpi / Arts Council England UK Tour)</li>
+          <li>Assistant Musical Director: Hildegard’s <em>Ordo Virtutum</em> (Kensington Olympia Festival of Music)</li>
+          <li>Musical Director (Barnes Community Choir / Barnes Concert Band 2025)</li>
+          <li>Bass: <em>Fête Galante</em> (Ethel Smyth / Pegasus Opera)</li>
+          <li>Accompanist (Barnes Music Festival 2025)</li>
+          <li>Assistant Musical Director / Orchestrator: <em>The Power of Camelot</em> (Ruth Chan / British Youth Music Theatre)</li>
+          <li>Producer: <em>The Blue Bird</em> (BBC Radio 3)</li>
+          <li>Session Singer: <em>SAULT</em> (Air I, Air II, Drumsheds Live)</li>
+        </ul>
+      </div>
     </section>
 
-    <!-- Recent Projects Section -->
-    <section class="section container">
-      <h2 class="section__title">Recent Projects</h2>
-      <ul class="projects">
-        <li class="projects__item">
-          <span class="projects__name">St. Mary's Acton</span>
-        </li>
-        <li class="projects__item">
-          <span class="projects__name">Alma Consort</span>
-        </li>
-        <li class="projects__item">
-          <span class="projects__name">St. John the Baptist Holland Road</span>
-        </li>
-      </ul>
-    </section>
+    <div class="hero__row-spacer" aria-hidden="true"></div>
   </main>
 
   <Footer />
 </BaseLayout>
 
 <style>
-  /* Hero */
+  main {
+    padding-inline: var(--page-padding-x);
+    padding-top: var(--space-70);
+  }
+
+  /* Hero row */
   .hero {
-    padding: clamp(4rem, 12vw, 8rem) var(--container-padding) clamp(3rem, 8vw, 5rem);
-    text-align: center;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: var(--block-gap);
+    margin-top: 0;
   }
 
-  .hero__inner {
-    max-width: var(--container-max);
-    margin: 0 auto;
+  .hero__image-col {
+    flex: 0 0 calc(50% - var(--block-gap) / 2);
+    min-width: 0;
+    align-self: center;
+    padding-inline: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
-  .hero__photo-wrapper {
-    margin: 0 auto clamp(1.5rem, 3vw, 2.5rem);
-    width: clamp(180px, 30vw, 280px);
-    height: clamp(180px, 30vw, 280px);
-    border-radius: 50%;
-    overflow: hidden;
+  .hero__text-col {
+    flex: 0 0 calc(40% - var(--block-gap) / 2);
+    min-width: 0;
+    align-self: flex-end;
+    padding-inline: var(--space-50);
+    display: flex;
+    flex-direction: column;
   }
 
-  .hero__photo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  .hero__top-spacer { height: 100px; }
+  .hero__bottom-spacer { height: 63px; }
+
+  .hero__headshot {
+    width: 411px;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: contain;
+    max-width: 100%;
   }
 
   .hero__name {
-    font-size: clamp(2.5rem, 5vw + 1rem, 4rem);
-    font-weight: 400;
-    margin-bottom: 0.3em;
-    letter-spacing: 0.02em;
+    font-family: var(--font-sans);
+    font-size: clamp(40.809px, 2.551rem + ((1vw - 3.2px) * 6.24), 77px);
+    line-height: 0.8;
+    font-weight: 700;
   }
 
-  .hero__tagline {
-    font-size: clamp(1.05rem, 1.5vw + 0.3rem, 1.3rem);
-    color: var(--color-text-light);
-    letter-spacing: 0.08em;
-    font-weight: 300;
-    margin-bottom: 0;
+  .hero__line {
+    font-family: var(--font-sans);
+    font-size: var(--fs-medium);
   }
+  .hero__line + .hero__line { margin-top: var(--space-30); }
+  .hero__name + .hero__line { margin-top: var(--space-30); }
 
-  /* Sections */
-  .section {
-    padding-top: clamp(2.5rem, 6vw, 4rem);
-    padding-bottom: clamp(2.5rem, 6vw, 4rem);
-  }
-
-  .section__title {
-    margin-bottom: clamp(1rem, 2vw, 1.5rem);
-  }
-
-  /* Projects list */
-  .projects {
-    list-style: none;
+  /* About / Recent Projects row */
+  .row {
     display: flex;
-    flex-direction: column;
-    gap: clamp(0.8rem, 1.5vw, 1.2rem);
+    flex-wrap: nowrap;
+    gap: var(--block-gap);
+    margin-top: var(--space-40);
+    align-items: flex-start;
   }
 
-  .projects__item {
-    padding-bottom: clamp(0.8rem, 1.5vw, 1.2rem);
-    border-bottom: 1px solid var(--color-border);
+  .row__col {
+    flex: 1 1 0;
+    min-width: 0;
+    padding-inline: var(--space-50);
   }
 
-  .projects__item:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
+  .row__label {
+    font-size: clamp(0.929rem, 0.929rem + ((1vw - 0.2rem) * 1.299), 1.4rem);
+    font-family: var(--font-serif);
   }
 
-  .projects__name {
-    font-size: clamp(1.05rem, 1.2vw + 0.3rem, 1.2rem);
+  .row__body {
+    font-size: clamp(0.875rem, 0.875rem + ((1vw - 0.2rem) * 0.621), 1.1rem);
+  }
+
+  .row__list {
+    padding-left: var(--block-gap);
+  }
+  .row__list li {
+    font-size: clamp(0.875rem, 0.875rem + ((1vw - 0.2rem) * 0.759), 1.15rem);
+  }
+  .row__list li + li { margin-top: var(--space-30); }
+
+  .row__label + .row__body,
+  .row__label + .row__list { margin-top: var(--space-30); }
+
+  .hero__row-spacer { height: 2rem; }
+
+  /* Mobile stack */
+  @media (max-width: 781px) {
+    .hero,
+    .row {
+      flex-direction: column;
+      flex-wrap: wrap;
+    }
+    .hero__image-col,
+    .hero__text-col,
+    .row__col {
+      flex: 1 1 100%;
+    }
+    .hero__top-spacer { height: var(--space-40); }
+    .hero__bottom-spacer { height: var(--space-40); }
+    .hero__text-col {
+      align-self: stretch;
+      padding-inline: 0;
+    }
+    .row__col {
+      padding-inline: 0;
+    }
   }
 </style>

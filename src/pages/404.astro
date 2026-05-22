@@ -1,0 +1,21 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+---
+
+<PageLayout title="Page not found - Luca Wetherall" description="The page you were looking for could not be found.">
+  <article>
+    <h1 class="page-title">Page not found</h1>
+    <div class="content body spectral-override">
+      <p>The page you were looking for doesn’t exist. Try the <a href="/">homepage</a>, or get in touch via the <a href="/contact">contact page</a>.</p>
+    </div>
+  </article>
+</PageLayout>
+
+<style>
+  .page-title {
+    margin-bottom: var(--space-50);
+  }
+  .body p {
+    font-size: var(--fs-medium);
+  }
+</style>

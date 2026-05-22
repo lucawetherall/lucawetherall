@@ -1,20 +1,29 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import Nav from '../components/Nav.astro';
+import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
 interface Props {
   title?: string;
   description?: string;
+  ogType?: 'website' | 'profile';
+  jsonLd?: unknown;
 }
 
-const { title, description } = Astro.props;
+const { title, description, ogType, jsonLd } = Astro.props;
 ---
 
-<BaseLayout title={title} description={description}>
-  <Nav />
-  <main class="page-content container">
+<BaseLayout title={title} description={description} ogType={ogType} jsonLd={jsonLd}>
+  <Header />
+  <main id="main" class="page-main">
     <slot />
   </main>
   <Footer />
 </BaseLayout>
+
+<style>
+  .page-main {
+    padding-top: 6.125rem;
+    padding-bottom: var(--space-60);
+  }
+</style>

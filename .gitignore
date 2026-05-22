@@ -21,3 +21,6 @@ Thumbs.db
 
 # Astro
 .astro/
+
+# Playwright test artifacts
+.playwright-mcp/

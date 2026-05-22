@@ -3,56 +3,30 @@ import PageLayout from '../layouts/PageLayout.astro';
 ---
 
 <PageLayout
-  title="Teaching — Luca Wetherall"
-  description="Music lessons with Luca Wetherall. Book a lesson or get in touch to learn more."
+  title="Teaching - Luca Wetherall"
+  description="Singing Teacher and Musicologist. I offer singing lessons (classical, musical theatre, jazz, and pop) and Oxbridge interview practice."
 >
-  <h1>Teaching</h1>
-  <div class="teaching-content">
-    <p>
-      Luca offers private music tuition for students of all ages and abilities.
-      With experience teaching across a range of levels — from beginners to advanced
-      students — lessons are tailored to each individual's goals, whether that's
-      preparing for exams, developing technique, or simply enjoying music.
-    </p>
-    <p>
-      Lessons focus on building a strong musical foundation, combining technical
-      development with musicianship, theory, and ear training. Luca's teaching
-      approach emphasises understanding and enjoyment, helping students develop
-      confidence and a lifelong connection to music.
-    </p>
-    <p>
-      Lessons are available in person (London) and online.
-    </p>
-    <p class="teaching-cta">
-      <a href="https://cal.com/lucawetherall" target="_blank" rel="noopener noreferrer" class="teaching-link">
-        Book a lesson via Cal.com &rarr;
-      </a>
-    </p>
-  </div>
+  <article>
+    <h1 class="page-title">Teaching</h1>
+    <div class="content body spectral-override">
+      <p>I am an experienced singing teacher and vocal technician teaching students of all ages and specialising in classical, pop, jazz, and musical theatre. I currently hold teaching positions at Latymer Upper and Newton Prep School. I have also taught at Leighton Park School and for Hillingdon Council. In higher education I work with undergraduate music students and choral scholars at the University of Oxford as well as on the BA Musical Theatre course at the Liverpool Institute for Performing Arts (LIPA). I previously held teaching positions with the Girls’ Choir of Merton College Oxford and the Choir of Liverpool Cathedral.</p>
+
+      <p>I also offer A-Level Music tuition as well as mock interviews and preparation sessions for Oxford and Cambridge university entrance to their undergraduate Music course. I am interested in hearing from prospective applicants who want to talk about any aspect of the process. I studied for my undergraduate degree in Music at the University of Oxford (Exeter College) where I was supervised by the Chair of Faculty. I was then a postgraduate Musicologist at Royal Holloway (fully funded by The Headley Trust) and am now a fully funded doctoral researcher (DPhil Music), Tutor in Music, and Clarendon Scholar at the University of Oxford.</p>
+
+      <p>If you are interested in having an online lesson please book a slot here:</p>
+
+      <p><a href="https://cal.com/lucawetherall" target="_blank" rel="noreferrer noopener">https://cal.com/lucawetherall</a></p>
+
+      <p>Alternatively, if you would like to have an informal conversation over email please get in touch via the contact page on this website.</p>
+    </div>
+  </article>
 </PageLayout>
 
 <style>
-  h1 {
-    margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  .page-title {
+    margin-bottom: var(--space-50);
   }
-
-  .teaching-content p {
-    margin-bottom: 1.25em;
-  }
-
-  .teaching-cta {
-    margin-top: clamp(1.5rem, 3vw, 2.5rem);
-  }
-
-  .teaching-link {
-    font-size: clamp(1.05rem, 1.2vw + 0.3rem, 1.2rem);
-    color: var(--color-text);
-    border-bottom: 1px solid var(--color-border);
-    padding-bottom: 2px;
-    transition: border-color 0.2s ease;
-  }
-
-  .teaching-link:hover {
-    border-color: var(--color-text);
+  .body p {
+    font-size: var(--fs-medium);
   }
 </style>
