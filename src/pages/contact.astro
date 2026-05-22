@@ -4,15 +4,19 @@ import ContactForm from '../components/ContactForm.astro';
 ---
 
 <PageLayout
-  title="Contact — Luca Wetherall"
-  description="Get in touch with Luca Wetherall for performance enquiries, lessons, or collaborations."
+  title="Contact - Luca Wetherall"
+  description="Luca Wetherall is a bass, jazz pianist, guitarist, composer, and musicologist based in London."
 >
-  <h1>Contact</h1>
-  <ContactForm />
+  <article>
+    <h1 class="page-title">Contact</h1>
+    <div class="content">
+      <ContactForm />
+    </div>
+  </article>
 </PageLayout>
 
 <style>
-  h1 {
-    margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  .page-title {
+    margin-bottom: var(--space-50);
   }
 </style>

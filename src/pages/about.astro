@@ -3,46 +3,31 @@ import PageLayout from '../layouts/PageLayout.astro';
 ---
 
 <PageLayout
-  title="About — Luca Wetherall"
-  description="Learn more about Luca Wetherall, a musician, composer, and teacher based in London."
+  title="About - Luca Wetherall"
+  description="Luca Wetherall — conductor, bass, pianist, organist, and singing teacher. Clarendon Scholar and Tutor in Music at the University of Oxford."
+  ogType="profile"
 >
-  <h1>About</h1>
-  <div class="about-content">
-    <p>
-      Luca Wetherall is a versatile musician, composer, and teacher based in London.
-      With a deep passion for music spanning classical, contemporary, and sacred traditions,
-      Luca brings a wealth of experience to every performance and collaboration.
-    </p>
-    <p>
-      Holding degrees in music performance and composition, Luca has developed a distinctive
-      artistic voice that bridges historical practice with modern expression. This breadth
-      of training informs both performance and creative work, allowing for thoughtful
-      interpretations that honour tradition while embracing innovation.
-    </p>
-    <p>
-      As a performer, Luca has worked with ensembles and churches across London, contributing
-      to a vibrant musical community. Notable collaborations include work with St. Mary's Acton,
-      the Alma Consort, and St. John the Baptist Holland Road, among others.
-    </p>
-    <p>
-      Beyond performance, Luca is a dedicated educator, committed to nurturing the next
-      generation of musicians. With experience teaching across a range of abilities and ages,
-      Luca's approach emphasises musical understanding, technical development, and the joy of
-      making music.
-    </p>
-  </div>
+  <article>
+    <h1 class="page-title">About</h1>
+    <div class="content body">
+      <p>Luca Wetherall is a conductor, bass, pianist, organist, and singing teacher. His debut release, The Blue Bird, premiered on BBC Radio 3.</p>
+
+      <p>His musical career began as a scholar at Liverpool Cathedral under the direction of Lee Ward followed by a degree in Music at the University of Oxford where he held a choral scholarship at Merton College where he recorded four major albums for Delphian Records and appeared at the Barbican alongside the Britten Sinfonia. He was then the University of London Headley Trust Music scholar, fully funding his Masters research at Royal Holloway. Luca is now a Clarendon Scholar, doctoral researcher, and Tutor in Music at the University of Oxford where he teaches topics in Analysis, Popular Music, and Conducting. He studies singing and vocal pedagogy with Gary Coward (Royal Opera House).</p>
+
+      <p>He is the Director of Music and Organist at St. Mary’s Acton where he is the principal conductor for their three choirs, Choral Director at St John the Baptist Holland Road, and Music Supervisor and conductor for Company Carpi. With Company Carpi, he recently conducted the Arts Council Funded opera tour of <em>Disunited Jukebox.</em> He has also worked as a director for Barnes Community Choir, British Youth Music Theatre, and the Kensington Olympia Festival of Music. He teaches singing at Latymer Upper. He has appeared with numerous professional choirs including Mosaic Voices, the Armonico Consort, Ensemble Pro Victoria, and the Liverpool Philharmonic Chamber Choir.</p>
+
+      <p>Luca was a featured artist in the Bitesize Proms concert series and has appeared as a soloist with the Instruments of Time and Truth, Oxford Contemporary Sinfonia, and the Orchestra of St. John’s. Recent solo appearances include a residency at King’s Place London, solos with the Bate Collective at the Keble Early Music Festival, recitals at Jesus College Oxford and the Royal Academy of Music, and a performance of baroque works at the Victoria Gallery. He has worked as a session singer for SAULT in both studio recordings and live performances.</p>
+
+      <p>He is an experienced soloist and ensemble singer as well as being an active composer and arranger. His compositions and arrangements have been performed by the BBC Singers, Mosaic Voices, CHROMA Ensemble, the Illumni Men’s Chorale, and the Choir of Merton College Oxford. Luca also works as a jazz pianist and a vocalist for a professional big band. He enjoys practicing audio and video production, creating music videos for YouTube, Instagram, and TikTok which have amassed over 50,000 followers and 20 million views. As a vocal recording producer Luca has worked on multiple projects at the Royal College of Music and at Imperial College London. Luca’s videos have been featured by both Classic FM and composer Eric Whitacre.</p>
+    </div>
+  </article>
 </PageLayout>
 
 <style>
-  h1 {
-    margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  .page-title {
+    margin-bottom: var(--space-50);
   }
-
-  .about-content p {
-    margin-bottom: 1.25em;
-  }
-
-  .about-content p:last-child {
-    margin-bottom: 0;
+  .body p {
+    font-size: var(--fs-medium);
   }
 </style>

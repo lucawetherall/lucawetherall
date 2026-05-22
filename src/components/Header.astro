@@ -1,0 +1,122 @@
+---
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/teaching', label: 'Teaching' },
+  { href: '/contact', label: 'Contact' },
+];
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+
+<header class="header">
+  <div class="header__row alignwide">
+    <p class="header__title"><a href="/">Luca Wetherall</a></p>
+    <button class="header__toggle" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
+      <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <rect x="4" y="7.5" width="16" height="1.5" />
+        <rect x="4" y="15" width="16" height="1.5" />
+      </svg>
+    </button>
+    <nav class="header__nav" id="primary-nav" aria-label="Main navigation">
+      {navLinks.map(({ href, label }) => {
+        const normalised = href.replace(/\/$/, '') || '/';
+        const active = currentPath === normalised;
+        return (
+          <a href={href} class={active ? 'is-active' : ''} aria-current={active ? 'page' : undefined}>{label}</a>
+        );
+      })}
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    padding-inline: var(--space-50);
+    padding-top: calc(var(--space-60) + 22px);
+    padding-bottom: var(--space-60);
+  }
+
+  .header__row {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-50);
+  }
+
+  .header__title {
+    font-family: var(--font-sans);
+    font-size: var(--fs-medium);
+    font-weight: 700;
+    line-height: 1.125;
+    margin: 0;
+  }
+  .header__title a {
+    text-decoration: none;
+    color: var(--color-text);
+  }
+  .header__title a:hover {
+    text-decoration: underline;
+  }
+
+  .header__nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-50);
+    font-family: var(--font-sans);
+    font-size: var(--fs-small);
+  }
+  .header__nav a {
+    color: var(--color-text);
+    text-decoration: none;
+  }
+  .header__nav a:hover,
+  .header__nav a:focus,
+  .header__nav a.is-active {
+    text-decoration: underline;
+  }
+
+  .header__toggle {
+    display: none;
+    background: none;
+    border: 0;
+    color: var(--color-text);
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 2px;
+  }
+
+  @media (max-width: 781px) {
+    .header__toggle {
+      display: inline-flex;
+    }
+    .header__nav {
+      display: none;
+      width: 100%;
+      flex-direction: column;
+      gap: var(--space-30);
+      margin-top: var(--space-30);
+    }
+    .header__nav.is-open {
+      display: flex;
+    }
+    .header__row {
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-30);
+    }
+  }
+</style>
+
+<script>
+  const toggle = document.querySelector('.header__toggle') as HTMLButtonElement | null;
+  const nav = document.getElementById('primary-nav');
+  if (toggle && nav) {
+    toggle.addEventListener('click', () => {
+      const open = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!open));
+      toggle.setAttribute('aria-label', open ? 'Open menu' : 'Close menu');
+      nav.classList.toggle('is-open', !open);
+    });
+  }
+</script>

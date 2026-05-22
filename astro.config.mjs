@@ -1,7 +1,9 @@
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://lucawetherall.github.io',
-  base: '/lucawetherall/',
+  site: 'https://lucawetherall.co.uk',
+  base: '/',
   output: 'static',
+  integrations: [sitemap()],
 });
