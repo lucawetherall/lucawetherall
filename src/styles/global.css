@@ -24,8 +24,8 @@
   --fs-xx-large: clamp(1.728rem, 1.728rem + ((1vw - 0.2rem) * 0.954), 2.074rem);
 
   /* Layout */
-  --content-size: 650px;
-  --wide-size: 900px;
+  --content-size: 720px;
+  --wide-size: 1040px;
   --page-padding-x: 19px;
 
   /* Spacing scale */
@@ -59,6 +59,24 @@ body {
   background-color: var(--color-bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* On desktop / large tablets, scale the whole page down so the footer fits at the
+   bottom of the viewport. Mobile renders at native size for readability. */
+@media (min-width: 782px) {
+  body {
+    zoom: 0.85;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+  main {
+    flex: 1 0 auto;
+  }
+  footer {
+    flex-shrink: 0;
+  }
 }
 
 main {

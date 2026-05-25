@@ -1,4 +1,8 @@
 ---
+interface Props {
+  showOnMobileOnly?: boolean;
+}
+const { showOnMobileOnly = false } = Astro.props;
 const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
@@ -8,7 +12,7 @@ const navLinks = [
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 ---
 
-<header class="header">
+<header class:list={['header', { 'header--mobile-only': showOnMobileOnly }]}>
   <div class="header__row alignwide">
     <p class="header__title"><a href="/">Luca Wetherall</a></p>
     <button class="header__toggle" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
@@ -34,6 +38,13 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
     padding-inline: var(--space-50);
     padding-top: calc(var(--space-60) + 22px);
     padding-bottom: var(--space-60);
+  }
+
+  /* Hide entirely on desktop when the parent page already has its own H1 */
+  @media (min-width: 782px) {
+    .header--mobile-only {
+      display: none;
+    }
   }
 
   .header__row {
@@ -87,6 +98,18 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
   }
 
   @media (max-width: 781px) {
+    .header {
+      padding-top: var(--space-50);
+      padding-bottom: var(--space-40);
+      padding-inline: var(--page-padding-x);
+    }
+    /* Hide the site title on mobile — only the hamburger is visible */
+    .header__title {
+      display: none;
+    }
+    .header__row {
+      justify-content: flex-end;
+    }
     .header__toggle {
       display: inline-flex;
     }

@@ -32,7 +32,7 @@ const socialLinks = [
 
 <style>
   .footer {
-    padding-top: var(--space-80);
+    padding-top: var(--space-40);
     padding-inline: var(--space-50);
     padding-bottom: 0;
   }
@@ -41,14 +41,14 @@ const socialLinks = [
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
-    align-items: center;
-    padding-block: var(--space-60);
+    align-items: baseline;
+    padding-block: var(--space-30);
   }
 
   .footer__left {
     display: flex;
     flex-wrap: nowrap;
-    align-items: center;
+    align-items: baseline;
     gap: var(--space-30);
   }
 
@@ -81,16 +81,34 @@ const socialLinks = [
   }
 
   @media (max-width: 781px) {
+    .footer {
+      padding-top: var(--space-50);
+      padding-inline: var(--page-padding-x);
+    }
     .footer__row {
-      flex-wrap: wrap;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      align-items: center;
+      text-align: center;
       gap: var(--space-30);
+      padding-block: var(--space-40);
     }
     .footer__left {
-      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-30);
+    }
+    .footer__name {
+      font-size: var(--fs-small);
+    }
+    .footer__social {
+      text-align: center;
     }
     .footer__copy {
-      text-align: left;
-      width: 100%;
+      text-align: center;
+      width: auto;
+      font-size: var(--fs-x-small);
+      color: var(--color-muted);
     }
   }
 </style>
