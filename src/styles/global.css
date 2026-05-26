@@ -74,8 +74,8 @@ body {
   font-feature-settings: "kern", "liga", "tnum";
 }
 
-/* On desktop / large tablets, scale the whole page down so the footer fits at the
-   bottom of the viewport. Mobile renders at native size for readability. */
+/* On desktop / large tablets, use a flex column body so the footer sits at the
+   bottom of the viewport even on short pages. */
 @media (min-width: 782px) {
   body {
     display: flex;

@@ -134,6 +134,14 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 <script>
   const toggle = document.querySelector('.header__toggle') as HTMLButtonElement | null;
   const nav = document.getElementById('primary-nav');
+
+  function closeMenu() {
+    if (!toggle || !nav) return;
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Open menu');
+    nav.classList.remove('is-open');
+  }
+
   if (toggle && nav) {
     toggle.addEventListener('click', () => {
       const open = toggle.getAttribute('aria-expanded') === 'true';
@@ -142,4 +150,8 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
       nav.classList.toggle('is-open', !open);
     });
   }
+
+  // The header is transition:persist'd across Astro view transitions,
+  // so its DOM (and any "open" menu state) survives navigation. Reset on swap.
+  document.addEventListener('astro:after-swap', closeMenu);
 </script>
