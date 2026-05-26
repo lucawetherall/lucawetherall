@@ -214,8 +214,8 @@ input[type="submit"].button {
 }
 
 ::selection {
-  background: var(--color-accent);
-  color: #ffffff;
+  background: rgba(93, 88, 142, 0.18);
+  color: var(--color-text);
 }
 
 /* Visually hidden */
