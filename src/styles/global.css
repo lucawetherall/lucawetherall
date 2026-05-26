@@ -28,15 +28,23 @@
   --wide-size: 1040px;
   --page-padding-x: 19px;
 
-  /* Spacing scale */
-  --space-20: 0.44rem;
-  --space-30: 0.75rem;
-  --space-40: 1rem;
-  --space-50: 1.5rem;
-  --space-60: 2rem;
-  --space-70: 3rem;
-  --space-80: 4rem;
-  --block-gap: var(--space-40);
+  /* Baseline rhythm — 8px base, 24px line for body (= 1 baseline) */
+  --space-1: 0.5rem;   /*  8px */
+  --space-2: 1rem;     /* 16px */
+  --space-3: 1.5rem;   /* 24px — one baseline */
+  --space-4: 2rem;     /* 32px */
+  --space-5: 3rem;     /* 48px — two baselines */
+  --space-6: 4.5rem;   /* 72px — three baselines */
+
+  /* Back-compat aliases for existing call sites — keep until migration done */
+  --space-20: var(--space-1);
+  --space-30: var(--space-2);
+  --space-40: var(--space-2);
+  --space-50: var(--space-3);
+  --space-60: var(--space-4);
+  --space-70: var(--space-5);
+  --space-80: var(--space-6);
+  --block-gap: var(--space-2);
 }
 
 *,
