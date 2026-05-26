@@ -65,8 +65,14 @@ body {
   line-height: 1.5;
   color: var(--color-text);
   background-color: var(--color-bg);
+  font-feature-settings: "kern", "liga", "onum";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Tabular figures for data columns, prices, timers */
+.tabular {
+  font-feature-settings: "kern", "liga", "tnum";
 }
 
 /* On desktop / large tablets, scale the whole page down so the footer fits at the
