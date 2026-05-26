@@ -12,7 +12,7 @@ const navLinks = [
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 ---
 
-<header class:list={['header', { 'header--mobile-only': showOnMobileOnly }]}>
+<header class:list={['header', { 'header--mobile-only': showOnMobileOnly }]} transition:persist>
   <div class="header__row alignwide">
     <p class="header__title"><a href="/">Luca Wetherall</a></p>
     <button class="header__toggle" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
