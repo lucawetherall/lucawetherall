@@ -24,3 +24,4 @@ Thumbs.db
 
 # Playwright test artifacts
 .playwright-mcp/
+.superpowers/
