@@ -79,7 +79,7 @@ const jsonLd = {
 
     <section class="row alignwide spectral-override">
       <div class="row__col">
-        <p class="row__label"><strong>About:</strong></p>
+        <p class="row__label">About</p>
         <p class="row__body">
           Luca is a highly experienced musician working across multiple disciplines and genres. He is the Director of Music and Organist at <a href="https://www.stmaryacton.org.uk/" target="_blank" rel="noreferrer noopener">St. Mary’s Acton</a>, Director of the <a href="http://www.almaconsort.com" target="_blank" rel="noreferrer noopener">Alma Consort</a> and one of the Choral Directors at <a href="https://hollandparkbenefice.org/about-st-john-the-baptist" target="_blank" rel="noreferrer noopener">St. John the Baptist Holland Road</a>. He is an accomplished singer working as a low bass in opera and in choral music. As a pianist, he is highly renowned for his abilities as an improviser and sight-reader.
         </p>
@@ -90,7 +90,7 @@ const jsonLd = {
       </div>
 
       <div class="row__col">
-        <p class="row__label"><strong>Recent Projects:</strong></p>
+        <p class="row__label">Recent Projects</p>
         <ul class="row__list">
           <li>Musical Director and Music Supervisor: <em>Disunited Jukebox</em> (Company Carpi / Arts Council England UK Tour)</li>
           <li>Assistant Musical Director: Hildegard’s <em>Ordo Virtutum</em> (Kensington Olympia Festival of Music)</li>
@@ -186,8 +186,12 @@ const jsonLd = {
   }
 
   .row__label {
-    font-size: clamp(0.929rem, 0.929rem + ((1vw - 0.2rem) * 1.299), 1.4rem);
-    font-family: var(--font-serif);
+    font-family: var(--font-sans);
+    font-variant-caps: all-small-caps;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--color-text);
+    font-size: var(--fs-small);
   }
 
   .row__body {
