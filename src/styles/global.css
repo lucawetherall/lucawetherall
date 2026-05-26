@@ -9,7 +9,6 @@
   --color-text: #212121;
   --color-accent: #5d588e;
   --color-muted: #5b5b5b;
-  --color-link-hover: #4c7b72;
 
   /* Fonts */
   --font-serif: "Spectral", "Source Serif Pro", Georgia, serif;
@@ -158,14 +157,16 @@ a {
   color: var(--color-text);
   font-family: var(--font-sans);
   text-decoration: underline;
-  text-decoration-thickness: 0.0625em;
+  text-decoration-thickness: 0.5px;
   text-underline-offset: 0.3em;
+  text-decoration-color: #a8a08a;
+  transition: text-decoration-color 0.15s ease, color 0.15s ease;
 }
 
 p a:hover,
 li a:hover {
-  color: var(--color-link-hover);
-  text-decoration: none;
+  color: var(--color-accent);
+  text-decoration-color: var(--color-accent);
 }
 
 /* Lists */
