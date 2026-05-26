@@ -16,9 +16,9 @@
   --font-sans: "IBM Plex Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
   /* Type scale (clamps from WP global-styles-inline-css) */
-  --fs-x-small: clamp(0.833rem, 0.833rem + ((1vw - 0.2rem) * 1), 0.833rem);
-  --fs-small: clamp(0.833rem, 0.833rem + ((1vw - 0.2rem) * 0.461), 1rem);
-  --fs-medium: clamp(1rem, 1rem + ((1vw - 0.2rem) * 0.552), 1.2rem);
+  --fs-x-small: clamp(0.875rem, 0.875rem + ((1vw - 0.2rem) * 0.4), 0.95rem);
+  --fs-small: clamp(1rem, 1rem + ((1vw - 0.2rem) * 0.3), 1.1rem);
+  --fs-medium: clamp(1.1rem, 1.1rem + ((1vw - 0.2rem) * 0.4), 1.25rem);
   --fs-large: clamp(1.2rem, 1.2rem + ((1vw - 0.2rem) * 0.662), 1.44rem);
   --fs-x-large: clamp(1.44rem, 1.44rem + ((1vw - 0.2rem) * 0.794), 1.728rem);
   --fs-xx-large: clamp(1.728rem, 1.728rem + ((1vw - 0.2rem) * 0.954), 2.074rem);
