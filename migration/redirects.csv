@@ -1,0 +1,4 @@
+source_url,target_url,status,preserve_query_string,preserve_path_suffix,include_subdomains
+https://lucawetherall.co.uk/about,https://lucawetherall.co.uk/about/,301,false,false,false
+https://lucawetherall.co.uk/contact,https://lucawetherall.co.uk/contact/,301,false,false,false
+https://lucawetherall.co.uk/teaching,https://lucawetherall.co.uk/teaching/,301,false,false,false
