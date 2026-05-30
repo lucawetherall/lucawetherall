@@ -5,14 +5,14 @@ interface Props {
 const { showOnMobileOnly = false } = Astro.props;
 const navLinks = [
   { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
-  { href: '/teaching', label: 'Teaching' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/about/', label: 'About' },
+  { href: '/teaching/', label: 'Teaching' },
+  { href: '/contact/', label: 'Contact' },
 ];
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 ---
 
-<header class:list={['header', { 'header--mobile-only': showOnMobileOnly }]} transition:persist>
+<header class:list={['header', { 'header--mobile-only': showOnMobileOnly }]}>
   <div class="header__row alignwide">
     <p class="header__title"><a href="/">Luca Wetherall</a></p>
     <button class="header__toggle" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
@@ -109,6 +109,9 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
     }
     .header__row {
       justify-content: flex-end;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-30);
     }
     .header__toggle {
       display: inline-flex;
@@ -123,26 +126,20 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
     .header__nav.is-open {
       display: flex;
     }
-    .header__row {
-      flex-wrap: wrap;
-      align-items: center;
-      gap: var(--space-30);
-    }
   }
 </style>
 
 <script>
-  const toggle = document.querySelector('.header__toggle') as HTMLButtonElement | null;
-  const nav = document.getElementById('primary-nav');
+  // The header is re-rendered on every view-transition navigation (it is not
+  // transition:persist'd, so each page can show its own variant — e.g. the
+  // home page hides it on desktop). Re-bind the toggle on every page load.
+  // `astro:page-load` fires on the initial load and after each navigation.
+  function setupMenu() {
+    const toggle = document.querySelector('.header__toggle') as HTMLButtonElement | null;
+    const nav = document.getElementById('primary-nav');
+    if (!toggle || !nav || toggle.dataset.bound) return;
+    toggle.dataset.bound = 'true';
 
-  function closeMenu() {
-    if (!toggle || !nav) return;
-    toggle.setAttribute('aria-expanded', 'false');
-    toggle.setAttribute('aria-label', 'Open menu');
-    nav.classList.remove('is-open');
-  }
-
-  if (toggle && nav) {
     toggle.addEventListener('click', () => {
       const open = toggle.getAttribute('aria-expanded') === 'true';
       toggle.setAttribute('aria-expanded', String(!open));
@@ -151,7 +148,5 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
     });
   }
 
-  // The header is transition:persist'd across Astro view transitions,
-  // so its DOM (and any "open" menu state) survives navigation. Reset on swap.
-  document.addEventListener('astro:after-swap', closeMenu);
+  document.addEventListener('astro:page-load', setupMenu);
 </script>

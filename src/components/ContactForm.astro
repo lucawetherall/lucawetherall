@@ -1,9 +1,11 @@
 ---
 // Web3Forms contact form.
-// TODO before launch: replace YOUR_ACCESS_KEY_HERE with the real Web3Forms access
-// key (free key from https://web3forms.com). The form will appear functional but
-// submissions will fail with "Something went wrong" until the key is set.
-const accessKey = 'YOUR_ACCESS_KEY_HERE';
+// The access key (free, public — safe to expose client-side — from
+// https://web3forms.com) is read from the PUBLIC_WEB3FORMS_KEY build-time env
+// var. Set it in the deploy workflow / a local .env to activate the form.
+// TODO before launch: until the key is set, the form appears functional but
+// submissions fail with "Something went wrong".
+const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? 'YOUR_ACCESS_KEY_HERE';
 ---
 
 <form class="cform" action="https://api.web3forms.com/submit" method="POST" id="contact-form">
@@ -118,11 +120,17 @@ const accessKey = 'YOUR_ACCESS_KEY_HERE';
 </style>
 
 <script>
-  const form = document.getElementById('contact-form') as HTMLFormElement | null;
-  const result = document.getElementById('cform-result');
-  const submitBtn = document.getElementById('cform-submit') as HTMLButtonElement | null;
+  // Bind on every page load (initial + after each view transition). A top-level
+  // script runs only once, so without this the AJAX handler would be missing
+  // when the contact page is reached via client-side navigation, silently
+  // falling back to a native POST. The dataset guard avoids double-binding.
+  function setupContactForm() {
+    const form = document.getElementById('contact-form') as HTMLFormElement | null;
+    const result = document.getElementById('cform-result');
+    const submitBtn = document.getElementById('cform-submit') as HTMLButtonElement | null;
+    if (!form || !result || !submitBtn || form.dataset.bound) return;
+    form.dataset.bound = 'true';
 
-  if (form && result && submitBtn) {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       submitBtn.disabled = true;
@@ -154,4 +162,6 @@ const accessKey = 'YOUR_ACCESS_KEY_HERE';
       }
     });
   }
+
+  document.addEventListener('astro:page-load', setupContactForm);
 </script>
