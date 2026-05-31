@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
 import '@fontsource/ibm-plex-sans/400.css';
 import '@fontsource/ibm-plex-sans/500.css';
 import '@fontsource/ibm-plex-sans/700.css';
@@ -58,10 +58,10 @@ const ogImage = `${siteUrl}/og-image.png`;
     <title>{title}</title>
 
     {jsonLd && (
-      <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+      <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
     )}
 
-    <ViewTransitions />
+    <ClientRouter />
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to content</a>
